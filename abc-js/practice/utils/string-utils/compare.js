@@ -19,11 +19,7 @@ export function isEqual(firstText, secondText) {
 /** возвращает true если аргументы не равны, и true в иных случаях. */
 export function isNotEqual(firstText, secondText) {
     checkErrors(firstText, secondText);
-    if (len(firstText) !== len(secondText)) return true;
-
-    for (let index = 0; index < len(firstText); index++) {
-        if (firstText[index] !== secondText[index]) return true;
-    } return false;
+    return !(isEqual(firstText, secondText));
 }
 
 /** возвращает булевый ответ больше ли параметр firstText чем secondText. */
@@ -52,7 +48,7 @@ export function isLess(firstText, secondText) {
             return false;
         } else if (isMore(firstText, secondText)) {
             return false;
-        } return true;
+        } return true
     }
     return false;
 }
