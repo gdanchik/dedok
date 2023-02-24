@@ -3,5 +3,29 @@
  * Если в вхождение не найдено, то возвращает значение -1.
  * Параметр position задает начальную позицию с которой необходимо
  * начать поиск.*/
-export function indexOf(text, searchString, position) {
+import { len } from './len.js';
+import { isInteger } from '/abc-js/practice/utils/number-utils/is-integer.js';
+
+function checkErrors(text, searchString, position) {
+    if (typeof text !== "string") throw Error("argument must be type of string");
+    if (typeof searchString === "undefined" || typeof searchString !== "string") throw Error("invalid search string");
+    if (typeof position !== "number" || !isInteger(position)) throw Error("invalid index");
+}
+
+export function indexOf(text, searchString, position = 0) {
+    checkErrors(text, searchString, position);
+    for (let index = position; index < len(text); index++) {
+        if (text[index] === searchString[0]) {
+            let found = true;
+            for (let i = 0; i < len(searchString); i++) {
+                if (text[index + i] !== searchString[i]) {
+                    found = false;
+                    break;
+                }
+            }
+            if (found) return index;
+        }
+
+    }
+    return -1;
 }
