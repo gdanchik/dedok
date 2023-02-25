@@ -1,6 +1,5 @@
-function checkError(value) {if (typeof value !== "number") throw Error ("value must be only number type")};
+import { isInteger } from "./is-integer.js";
 
 export function isFloat(value) {
-    checkError(value);
-    return!((value % 1 === 0));
+    return!(isInteger(value));
 }

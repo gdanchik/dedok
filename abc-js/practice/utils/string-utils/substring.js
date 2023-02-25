@@ -4,12 +4,12 @@
  * Если end не передано, то будет возвращено text до последнего символа*/
 import { len } from './len.js';
 import { isInteger } from '/abc-js/practice/utils/number-utils/is-integer.js';
+import { checkStringError } from './common.js';
 
 export function substring(text, start, end) { 
     let result = "";
     
-    if (typeof text !== "string") throw Error("argument must be type of string");
-
+    checkStringError(text);
    
     if (typeof start === "undefined" && typeof end === "undefined") {
         return text;

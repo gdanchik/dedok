@@ -1,1 +1,3 @@
 *.vim
+package-lock.json
+package.json

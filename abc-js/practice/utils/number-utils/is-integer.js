@@ -1,6 +1,9 @@
-function checkError(value) {if (typeof value !== "number") throw Error ("value must be only number type")};
+import { checkError } from "../string-utils/common.js";
 
 export function isInteger(value) {
     checkError(value);
-    return((value % 1 === 0));
+    return(value % 1 === 0);
 }
+
+
+
