@@ -6,41 +6,39 @@ describe('ParseIntegerTests', () => {
   describe('number to number', () => {
     test('целые числа возвращается также', () => {
       assertToBe(parseInteger(1), 1);
-      // assertToBe(parseInteger(5), 5);
-      // assertToBe(parseInteger(53), 53);
-      // assertToBe(parseInteger(5359), 5359);
-      // assertToBe(parseInteger(-1), -1);
-      // assertToBe(parseInteger(-5), -5);
-      // assertToBe(parseInteger(-53), -53);
-      // assertToBe(parseInteger(-5359), -5359);
+      assertToBe(parseInteger(5), 5);
+      assertToBe(parseInteger(53), 53);
+      assertToBe(parseInteger(5359), 5359);
+      assertToBe(parseInteger(-1), -1);
+      assertToBe(parseInteger(-5), -5);
+      assertToBe(parseInteger(-53), -53);
+      assertToBe(parseInteger(-5359), -5359);
     });
 
-  //   test('число ноль возвращается также', () => {
-  //     assertToBe(parseInteger(0), 0);
-  //     assertToBe(parseInteger(+0), 0);
-  //     assertToBe(parseInteger(-0), 0);
-  //     assertToBe(parseInteger(-0.000), 0);
-  //   });
-  //
-  //
-  //   test('дробное число обрезается до целого', () => {
-  //     assertToBe(parseInteger(1.1), 1);
-  //     assertToBe(parseInteger(1.157), 1);
-  //     assertToBe(parseInteger(1.857), 1);
-  //     assertToBe(parseInteger(1.00001), 1);
-  //     assertToBe(parseInteger(0.1), 0);
-  //     assertToBe(parseInteger(0.157), 0);
-  //     assertToBe(parseInteger(0.857), 0);
-  //     assertToBe(parseInteger(0.00001), 0);
-  //     assertToBe(parseInteger(-0.1), 0);
-  //     assertToBe(parseInteger(-0.157), 0);
-  //     assertToBe(parseInteger(-0.857), 0);
-  //     assertToBe(parseInteger(-0.00001), 0);
-  //     assertToBe(parseInteger(-5.1), -5);
-  //     assertToBe(parseInteger(-5.157), -5);
-  //     assertToBe(parseInteger(-5.857), -5);
-  //     assertToBe(parseInteger(-5.00001), -5);
-  //   });
+    test('число ноль возвращается также', () => {
+      assertToBe(parseInteger(0), 0);
+      assertToBe(parseInteger(+0), 0);
+      assertToBe(parseInteger(-0), 0);
+      assertToBe(parseInteger(-0.000), 0);
+    });
+    test('дробное число обрезается до целого', () => {
+      assertToBe(parseInteger(1.1), 1);
+      assertToBe(parseInteger(1.157), 1);
+      assertToBe(parseInteger(1.857), 1);
+      assertToBe(parseInteger(1.00001), 1);
+      assertToBe(parseInteger(0.1), 0);
+      assertToBe(parseInteger(0.157), 0);
+      assertToBe(parseInteger(0.857), 0);
+      assertToBe(parseInteger(0.00001), 0);
+      assertToBe(parseInteger(-0.1), 0);
+      assertToBe(parseInteger(-0.157), 0);
+      assertToBe(parseInteger(-0.857), 0);
+      assertToBe(parseInteger(-0.00001), 0);
+      assertToBe(parseInteger(-5.1), -5);
+      assertToBe(parseInteger(-5.157), -5);
+      assertToBe(parseInteger(-5.857), -5);
+      assertToBe(parseInteger(-5.00001), -5);
+    });
   // });
   //
   // describe('string to number', () => {
