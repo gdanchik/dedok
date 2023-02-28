@@ -2,7 +2,7 @@ import { assertToBe, assertThrow } from '../../../../dependencies/asserts/assert
 import { describe, test } from '../../../../dependencies/tests/test.js';
 import { indexOf } from './index-of.js';
 import { complexText } from './common.js';
-
+import { len } from './len.js';
 
 describe('indexOfTests', () => {
   test('найти текст с середины текста', () => {
@@ -38,6 +38,9 @@ describe('indexOfTests', () => {
   // test('после 27 символе нет символа t', () => {
   //   assertToBe(indexOf(complexText, 't', 28), -1);
   // });
+  // test('искомый текст встречается после начального индекса и находится нормально', () => {
+  //   assertToBe(indexOf('I am: he hello brother. Answer: hello!', 'hello'), 9);
+  // })
   // test('второй параметр как пустая строка возвращает -1', () => {
   //   assertToBe(indexOf(complexText, ''), -1);
   //   assertToBe(indexOf(complexText, '', 5), -1);
@@ -48,6 +51,9 @@ describe('indexOfTests', () => {
   // test('отрицательный начальный индекс приводит к исключению', () => {
   //   assertThrow(() => indexOf(complexText, 't', -17), 'invalid index');
   // });
+  // test('начальный индекс больше длины приводит к исключениею', () => {
+  //   assertThrow(() => indexOf(complexText, 't', len(complexText) + 1), 'invalid index');
+  // });
   // test('дробные числа округляются в индексе приводит к исключению', () => {
   //   assertThrow(() => indexOf(complexText, 't', 2.2), 'invalid index');
   // });
@@ -56,11 +62,11 @@ describe('indexOfTests', () => {
   //   assertThrow(() => indexOf(complexText, 't', '2'), 'invalid index');
   // });
   // test('второй параметр обазятелен', () => {
-  //   assertThrow(() => indexOf('trusted true'), 'invalid search string');
+  //   assertThrow(() => indexOf('trusted true'), 'invalid searchString string');
   // });
   // test('тип второго параметра должен быть string', () => {
-  //   assertThrow(() => indexOf('trusted true', true), 'invalid search string');
-  //   assertThrow(() => indexOf('only 33', 3), 'invalid search string');
+  //   assertThrow(() => indexOf('trusted true', true), 'invalid searchString string');
+  //   assertThrow(() => indexOf('only 33', 3), 'invalid searchString string');
   // });
   // test('если тип первого аргумента не строка, то будет исключение', () => {
   //   assertThrow(() => indexOf(), 'argument must be type of string');
