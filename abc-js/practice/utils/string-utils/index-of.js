@@ -6,18 +6,14 @@
 import { len } from './len.js';
 import { isInteger } from '/abc-js/practice/utils/number-utils/is-integer.js';
 
-function checkErrors(text, searchString, position) {
-    if (typeof text !== "string") throw Error("argument must be type of string");
-    if (typeof searchString === "undefined" || typeof searchString !== "string") throw Error("invalid search string");
-    if (typeof position !== "number" || !isInteger(position)) throw Error("invalid index");
-}
-
 export function indexOf(text, searchString, position = 0) {
-    checkErrors(text, searchString, position);
-    for (let index = position; index < len(text); index++) {
+    checkAllParameters(text, searchString, position);
+    const lenText = len(text);
+    const lenSearchString = len(searchString);
+    for (let index = position; index < lenText; index++) {
         if (text[index] === searchString[0]) {
             let found = true;
-            for (let i = 0; i < len(searchString); i++) {
+            for (let i = 0; i < lenSearchString; i++) {
                 if (text[index + i] !== searchString[i]) {
                     found = false;
                     break;
@@ -28,4 +24,10 @@ export function indexOf(text, searchString, position = 0) {
 
     }
     return -1;
+}
+
+function checkAllParameters(text, searchString, position) {
+    if (typeof text !== "string") throw Error("argument must be type of string");
+    if (typeof searchString === "undefined" || typeof searchString !== "string") throw Error("invalid search string");
+    if (typeof position !== "number" || !isInteger(position)) throw Error("invalid index");
 }
