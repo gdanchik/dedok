@@ -36,12 +36,14 @@ export function isMore(firstText, secondText) {
 
 /** возвращает булевый ответ меньше ли параметр firstText чем secondText. */
 export function isLess(firstText, secondText) {
-    if (len(firstText) < len(secondText)) return true;
+    let lenFirstText = len(firstText);
+    let lenSecondText = len(secondText);
+    if (lenFirstText < lenSecondText) return true;
         if (isEqual(firstText, secondText)) {
             return false;
         } else if (isMore(firstText, secondText)) {
             return false;
-        } return true
+        } return true;
 }
 
 
