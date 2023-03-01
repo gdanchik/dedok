@@ -2,7 +2,7 @@ import { assertToBe, assertThrow } from '../../../../dependencies/asserts/assert
 import { describe, test } from '../../../../dependencies/tests/test.js';
 import { indexOf } from './index-of.js';
 import { complexText } from './common.js';
-
+import { len } from './len.js';
 
 describe('indexOfTests', () => {
   test('найти текст с середины текста', () => {
