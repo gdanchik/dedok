@@ -1,13 +1,11 @@
 import { len } from './len.js';
-import { checkStringError } from './common.js';
 
 /** возвращает булевый ответ равны ли параметры firstText и secondText. */
 export function isEqual(firstText, secondText) {
-    checkStringError(firstText, secondText);
-    let lenFirstText = len(firstText);
-    let lenSecondText = len(secondText);
+    const lenFirstText = len(firstText);
+    const lenSecondText = len(secondText);  
     if (lenFirstText !== lenSecondText) return false;
-    for (let index = 0; index < len(firstText); index++) {
+    for (let index = 0; index < lenFirstText; index++) {
         if (firstText[index] !== secondText[index]) return false;
     }
     return true;
@@ -20,9 +18,8 @@ export function isNotEqual(firstText, secondText) {
 
 /** возвращает булевый ответ больше ли параметр firstText чем secondText. */
 export function isMore(firstText, secondText) {
-    checkStringError(firstText, secondText);
-    let lenFirstText = len(firstText);
-    let lenSecondText = len(secondText);
+    const lenFirstText = len(firstText);
+    const lenSecondText = len(secondText);
     for (let index = 0; index < lenFirstText; index++) {
         if (index === lenSecondText) {
            return true;
@@ -36,8 +33,8 @@ export function isMore(firstText, secondText) {
 
 /** возвращает булевый ответ меньше ли параметр firstText чем secondText. */
 export function isLess(firstText, secondText) {
-    let lenFirstText = len(firstText);
-    let lenSecondText = len(secondText);
+    const lenFirstText = len(firstText);
+    const lenSecondText = len(secondText);
     if (lenFirstText < lenSecondText) return true;
         if (isEqual(firstText, secondText)) {
             return false;
@@ -50,7 +47,6 @@ export function isLess(firstText, secondText) {
 /** возвращает булевый ответ больше или равно ли параметр firstText чем secondText. */
 export function isMoreOrEqual(firstText, secondText) {
       return!(isLess(firstText, secondText));
- 
 
 }
 

@@ -1,6 +1,7 @@
-import { checkStringError } from "./common.js";
+import { checkIsString } from "./common.js";
+
 export function len(text) {
-    checkStringError(text);
+    checkIsString(text);
     let lenCount = 0;
     for (; text[lenCount] !== undefined; lenCount+=1) {} 
     return lenCount;
