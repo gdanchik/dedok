@@ -14,8 +14,7 @@ export function indexOf(text, searchString, index = 0) {
   const lenSearchStr = len(searchString);
 
   if(lenSearchStr === 0) return -1;
-  if(index > lenText || index < 0 ) throw Error("invalid index");
-
+  if(index > lenText || index < 0) throw Error("invalid index");
 
   for(let i = index; i <= lenText - lenSearchStr; i++) {
     if(isEqual(substring(text,i, i + lenSearchStr), searchString)) {

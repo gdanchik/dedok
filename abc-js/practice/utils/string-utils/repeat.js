@@ -7,6 +7,7 @@ import { checkIsString } from "./common.js";
 
 export function repeat(text, count = 1) {
   checkIsString(text);
+  if (typeof count !== "number") throw Error("invalid count");
   if (!isInteger(count) || count < 0) throw Error("invalid count");
   let result = "";
   for (let index = 0; index < count; index++) {
