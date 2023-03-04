@@ -26,7 +26,3 @@ export const ZERO_CODE_CHAR = String.fromCharCode(0);
 export function checkIsString(text) {
   if (typeof text !== "string") throw Error("argument must be type of string");
 }
-
-export function checkIsNumber(count) {
-  if (typeof count !== "number") throw Error("invalid count");
-}
