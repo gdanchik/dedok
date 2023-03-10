@@ -23,6 +23,6 @@ export const complexText = "Hello world!!! It's terminator";
 
 export const ZERO_CODE_CHAR = String.fromCharCode(0);
 
-export function checkIsString(text) {
-  if (typeof text !== "string") throw Error("argument must be type of string");
+export function checkIsString(text, parName) {
+  if (typeof text !== "string") throw Error(`argument${parName ?? ""} must be type of string`);
 }

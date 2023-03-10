@@ -25,7 +25,7 @@ describe("substringTests", () => {
   });
   test("если не передавать второй индекс, то возвращается до конца текста", () => {
     assertToBe(substring(complexText, 20), "terminator");
-  });
+  }); 
   test("если не передавать индексы, то возвращается копия строки", () => {
     assertToBe(substring(complexText), complexText);
   });
