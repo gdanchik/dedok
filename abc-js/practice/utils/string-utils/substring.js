@@ -7,18 +7,18 @@ import { isInteger } from "/abc-js/practice/utils/number-utils/is-integer.js";
 import { checkIsString } from "./common.js";
 
 export function substring(text, start, end) {
-  let result = "";
+  const lenText = len(text);
   checkIsString(text);
-  if (typeof start === "undefined" && typeof end === "undefined") {
-    return text;
-  }
+  if (typeof start === "undefined" && typeof end === "undefined") return text;
+  if (typeof start !== "number") throw Error ("start must be type of number");
+  if (typeof (end ?? lenText) !== "number") throw Error ("end must be type of number");
   start = start ?? 0;
-  end = end ?? len(text);
+  end = end ?? lenText;
   if (!isInteger(start) || start < 0) throw Error("invalid start index");
-  if (typeof end !== "number" || end < 0) throw Error("invalid end index");
-  if (!isInteger(end)) throw Error("invalid end index");
+  if (!isInteger(end) || end < 0) throw Error("invalid end index");
   if (end < start) throw Error("invalid start and end index");
 
+  let result = "";
   for (let index = 0; index < end; index++) {
     if (index >= start) {
       result += text[index];

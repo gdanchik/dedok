@@ -1,7 +1,7 @@
 import { substring } from "./substring.js";
 import { len } from "./len.js";
-import { reverse } from "./reverse.js";
 import { checkIsString } from "./common.js";
+import { includes } from "./includes.js";
 const TRIM_SYMBOLS = " \n\t\v";
 
 /** Возвращает копию строки с удаленными символами со строки trimSymbols в начале строки.
@@ -11,7 +11,7 @@ export function trimStart(text, trimSymbols = TRIM_SYMBOLS) {
   checkIsString(text, " text");
   const lenText = len(text);
   for (let i = 0; i < lenText; i++) {
-    if (!trimSymbols.includes(text[i])) {
+    if (!includes(trimSymbols, text[i])) {
       return substring(text, i);
     }
   }
@@ -23,7 +23,13 @@ export function trimStart(text, trimSymbols = TRIM_SYMBOLS) {
 export function trimEnd(text, trimSymbols = TRIM_SYMBOLS) {
   checkIsString(trimSymbols, " trimSymbols");
   checkIsString(text, " text");
-  return reverse(trimStart(reverse(text), trimSymbols));
+  const lenText = len(text);
+  for (let i = lenText - 1; i >= 0; i--) {
+    if (!includes(trimSymbols, text[i])) {
+      return substring(text, 0, i + 1);
+    }
+  }
+  return "";
 }
 
 /** Возвращает копию строки с удаленными символами

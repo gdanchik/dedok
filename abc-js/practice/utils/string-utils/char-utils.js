@@ -1,3 +1,4 @@
+import { isInRange } from "../number-utils/is-in-range.js";
 import {
   DIGIT_FINISH,
   DIGIT_START,
@@ -11,6 +12,7 @@ import {
   RUS_LOWER_START,
   RUS_UPPER_FINISH,
   RUS_UPPER_START,
+  COUNT_NUM,
 } from "./common.js";
 import { len } from "./len.js";
 
@@ -23,8 +25,11 @@ function checkParameters(char) {
 /** возвращает булевый ответ, является ли символ в нижнем регистре. */
 export function isLower(char) {
   checkParameters(char);
-  if (char.charCodeAt(0) >= 97 && char.charCodeAt(0) <= 122) return true;
-  else if (char.charCodeAt(0) >= 1072 && char.charCodeAt(0) <= 1103)
+  const charCode = char.charCodeAt(0);
+  if (
+    isInRange(charCode, ENG_LOWER_START, ENG_LOWER_FINISH) ||
+    isInRange(charCode, RUS_LOWER_START, RUS_LOWER_FINISH)
+  )
     return true;
   else return false;
 }
@@ -32,8 +37,11 @@ export function isLower(char) {
 /** возвращает булевый ответ, является ли символ в верхнем регистре. */
 export function isUpper(char) {
   checkParameters(char);
-  if (char.charCodeAt(0) >= 65 && char.charCodeAt(0) <= 90) return true;
-  else if (char.charCodeAt(0) >= 1040 && char.charCodeAt(0) <= 1071)
+  const charCode = char.charCodeAt(0);
+  if (
+    isInRange(charCode, ENG_UPPER_START, ENG_UPPER_FINISH) ||
+    isInRange(charCode, RUS_UPPER_START, RUS_UPPER_FINISH)
+  )
     return true;
   else return false;
 }
@@ -44,11 +52,7 @@ export function isUpper(char) {
 export function toLower(char) {
   checkParameters(char);
   const charCode = char.charCodeAt(0);
-  if (charCode >= 65 && charCode <= 90) {
-    return String.fromCharCode(charCode + 32);
-  } else if (charCode >= 1040 && charCode <= 1071) {
-    return String.fromCharCode(charCode + 32);
-  }
+  if (isUpper(char)) return String.fromCharCode(charCode + COUNT_NUM);
   return char;
 }
 
@@ -58,25 +62,23 @@ export function toLower(char) {
 export function toUpper(char) {
   checkParameters(char);
   const charCode = char.charCodeAt(0);
-  if (charCode >= 97 && charCode <= 122) {
-    return String.fromCharCode(charCode - 32);
-  } else if (charCode >= 1072 && charCode <= 1103) {
-    return String.fromCharCode(charCode - 32);
-  }
+  if (isLower(char)) return String.fromCharCode(charCode - COUNT_NUM);
   return char;
 }
 
 /** возвращает булево значения, является ли символ цифрой '1' --> true */
 export function isDigit(char) {
   checkParameters(char);
-  return char.charCodeAt(0) >= 48 && char.charCodeAt(0) <= 57;
+  const charCode = char.charCodeAt(0);
+  return isInRange(charCode, DIGIT_START, DIGIT_FINISH);
 }
 
 /** возвращает число из цифрового символа '1' --> 1 */
 export function toDigit(char) {
   checkParameters(char);
+  const charCode = char.charCodeAt(0);
   if (!isDigit(char)) throw Error("invalid char");
-  return char.charCodeAt(0) - "0".charCodeAt(0);
+  return charCode - DIGIT_START;
 }
 
 /** возвращает символ цифры из цифры 1 --> '1' */
@@ -84,5 +86,5 @@ export function fromDigit(digit) {
   if (typeof digit !== "number")
     throw Error("parameter is required and must be number type");
   if (digit < 0 || digit > 9) throw Error("invalid digit");
-  return String.fromCharCode(digit + 48);
+  return String.fromCharCode(digit + DIGIT_START);
 }

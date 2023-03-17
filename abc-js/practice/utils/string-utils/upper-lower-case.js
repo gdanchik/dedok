@@ -15,8 +15,9 @@ export function upperCase(text) {
 /** возвращает копию строки text в верхнем регистре */
 export function lowerCase(text) {
   checkIsString(text);
+  const lenText = len(text);
   let resultText = "";
-  for (let index = 0; index < len(text); index++) {
+  for (let index = 0; index < lenText; index++) {
     resultText += toLower(text[index]);
   }
   return resultText;

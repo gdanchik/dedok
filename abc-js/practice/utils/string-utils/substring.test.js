@@ -49,4 +49,11 @@ describe("substringTests", () => {
     assertThrow(() => substring(), "argument must be type of string");
     assertThrow(() => substring(true, 2), "argument must be type of string");
   });
+  test("если стартовый индекс не типа number, выкидывается ошибка", () => {
+    assertThrow(() => substring(complexText, "5", 2), "start must be type of number");
+    assertThrow(() => substring(complexText, 8, "6"), "end must be type of number");
+    assertThrow(() => substring(complexText, "ster", 2), "start must be type of number");
+    assertThrow(() => substring(complexText, 0, "ster"), "end must be type of number");
+
+  });
 });

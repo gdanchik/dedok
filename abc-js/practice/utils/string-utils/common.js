@@ -17,6 +17,7 @@ export const RUS_CHAR_SHIFT = RUS_LOWER_START - RUS_UPPER_START;
 
 export const DIGIT_START = 48;
 export const DIGIT_FINISH = 57;
+export const COUNT_NUM = 32;
 
 // --------------- for tests ------------------
 export const complexText = "Hello world!!! It's terminator";

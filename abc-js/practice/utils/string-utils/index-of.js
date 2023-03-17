@@ -14,7 +14,6 @@ export function indexOf(text, searchString, index = 0) {
   const lenSearchStr = len(searchString);
 
   if(lenSearchStr === 0) return -1;
-  if(index > lenText || index < 0) throw Error("invalid index");
 
   for(let i = index; i <= lenText - lenSearchStr; i++) {
     if(isEqual(substring(text,i, i + lenSearchStr), searchString)) {
@@ -25,7 +24,8 @@ export function indexOf(text, searchString, index = 0) {
 } 
 
 function checkParameters(text, searchString, index) {
+  const lenText = len(text);
   if (typeof text !== "string") throw Error("argument must be type of string");
   if ( typeof searchString !== "string") throw Error("invalid searchString string");
-  if (typeof index !== "number" || !isInteger(index)) throw Error("invalid index");
+  if (typeof index !== "number" || !isInteger(index) || index > lenText || index < 0) throw Error("invalid index");
 }

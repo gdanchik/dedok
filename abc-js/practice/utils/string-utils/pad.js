@@ -4,41 +4,30 @@
 import { checkIsString } from "./common.js";
 import { len } from "./len.js";
 
-export function padStart(text, maxLength, fillString = " ") {
-  let prefix = "";
-  let fillIndex = 0;
-
+function template (text, maxLength, fillString = " ") {
   checkIsString(fillString, " fillString");
   checkIsString(text, " text");
-  if (typeof (maxLength ?? text.length) !== "number")
-    throw Error("invalid type of maxLength");
-
+  if (typeof (maxLength ?? text.length) !== "number") throw Error("invalid type of maxLength");
+  let add = "";
+  let fillIndex = 0;
   for (let i = text.length; i < maxLength; i++) {
-    prefix += fillString[fillIndex % len(fillString)];
+    add += fillString[fillIndex % len(fillString)];
     fillIndex++;
   }
+  return add;
+}
 
-  return prefix + text;
+export function padStart(text, maxLength, fillString = " ") {
+  let result = template (text, maxLength, fillString);
+  return result + text;
 }
 
 /** Возвращает копию text увеличенный до длины maxLength
  * заполненный в конце символами fillString.
  * Допускается в fillString передавать строку из нескольких символов. */
 export function padEnd(text, maxLength, fillString = " ") {
-  let suffix = "";
-  let fillIndex = 0;
-
-  checkIsString(fillString, " fillString");
-  checkIsString(text, " text");
-  if (typeof (maxLength ?? text.length) !== "number")
-    throw Error("invalid type of maxLength");
-
-  for (let i = text.length; i < maxLength; i++) {
-    suffix += fillString[fillIndex % len(fillString)];
-    fillIndex++;
-  }
-
-  return text + suffix;
+  let result = template (text, maxLength, fillString);
+  return text + result;
 }
 
 /** Возвращает копию text увеличенный до длины maxLength
